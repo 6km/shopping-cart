@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html, body {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: #0f1217;
 }
 
-.App-link {
-  color: #61dafb;
+#Container {
+  width: 37em;
+  height: 18em;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 25px 10px 100px -75px black;
+  background: #1b2129;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#ContainerList {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 15px;
+}
+#ContainerList .ContainerListItem {
+  height: 35px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #28323e;
+}
+#ContainerList .ContainerListItem button:first-of-type {
+  transform: translateX(30em);
+}
+#ContainerList .ContainerListItem button {
+  background: #297ff0;
+  outline: none;
+  border: none;
+  height: 3em;
+  width: 3em;
+  margin-right: 10px;
+  border-radius: 8px;
+  position: absolute;
+  transform: translateX(34em);
+}
+#ContainerList .ContainerListItem button:last-of-type {
+  transform: translateX(37.9em);
 }
