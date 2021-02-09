@@ -8,6 +8,10 @@ html, body {
   background: #0f1217;
 }
 
+.cursor_pointer {
+  cursor: pointer;
+}
+
 #Container {
   width: 37em;
   height: 18em;

@@ -33,9 +33,9 @@ export default class App extends Component {
               this.state.items.map(item => 
                 <div className="ContainerListItem">
                   {item.name}
-                  <button onClick={() => this.add(item.id)}>+</button>
+                  <button className="cursor_pointer" onClick={() => this.add(item.id)}>+</button>
                   <button style={item.quantity <= 0 ? {background:'orange'}: {}} disabled>{item.quantity>0 ? item.quantity : 'Zero'}</button>
-                  <button onClick={() => this.remove(item.id)}>-</button>
+                  <button className="cursor_pointer" onClick={() => this.remove(item.id)}>-</button>
                 </div>
               )
             }
