@@ -2,8 +2,12 @@
 - Shopping cart example .
 
 # Getting Started
-- download this repository .
-- `cd *folder_name*` then use `npm start` to start a localhost
+- Download the repository .
+- `cd *folder_name*`
+- use `npm start` to start a localhost
+
+or
+- you can try it from this [link](https://e3sar33.github.io/shopping-cart/)
 
 # Screenshot
 <img src='screenshot.png'/>
