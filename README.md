@@ -7,7 +7,7 @@
 - use `npm start` to start a localhost
 
 or
-- you can try it from this [link](https://e3sar33.github.io/shopping-cart/)
+- you can try it from this [link](https://e3sa1.github.io/shopping-cart/)
 
 # Screenshot
 <img src='screenshot.png'/>
