@@ -24,6 +24,7 @@ export default class App extends Component {
     newState.items[id].quantity += 1
     this.setState(newState)
   }
+
   remove(id) {
     if (this.state.items[id].quantity > 0) {
       let newState = Object.assign({}, this.state)
@@ -40,7 +41,7 @@ export default class App extends Component {
 
     if (isProductNameEmpty) return;
 
-    let newState = Object.assign({}, this.state)
+    const newState = Object.assign({}, this.state)
 
     newState.items.push({
       name: newState.currentInputValue,
