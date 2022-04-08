@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { Component } from 'react';
 
 export default class App extends Component {
   constructor() {
@@ -13,28 +13,41 @@ export default class App extends Component {
     }
   }
 
+  shouldComponentUpdate(_nextProps, nextState) {
+    var { state } = this;
+
+    return !Object.is(state, nextState);
+  }
+
   add(id) {
-    this.state.items[id].quantity += 1
-    this.setState(this.state)
+    let newState = Object.assign({}, this.state)
+    newState.items[id].quantity += 1
+    this.setState(newState)
   }
   remove(id) {
     if (this.state.items[id].quantity > 0) {
-      this.state.items[id].quantity -= 1
+      let newState = Object.assign({}, this.state)
+      newState.items[id].quantity -= 1
+
+      this.setState(newState)
     }
-    this.setState(this.state)
   }
 
   addItem(e) {
     e.preventDefault();
 
-    if (!this.state.currentInputValue.trim()) return;
+    const isProductNameEmpty = !this.state.currentInputValue.trim()
 
-    this.state.items.push({
-      name: this.state.currentInputValue,
+    if (isProductNameEmpty) return;
+
+    let newState = Object.assign({}, this.state)
+
+    newState.items.push({
+      name: newState.currentInputValue,
       quantity: 1
     })
 
-    this.setState(this.state)
+    this.setState(newState)
   }
 
   render() {
@@ -44,7 +57,7 @@ export default class App extends Component {
           <div id="ContainerList">
             {
               this.state.items.map((item, idx) =>
-                <div className="ContainerListItem">
+                <div className="ContainerListItem" key={idx}>
                   <h4 id="ItemTitle">{item.name}</h4>
                   <div className="buttons">
                     <button className="cursor_pointer" onMouseDown={() => this.add(idx)}>+</button>
@@ -57,7 +70,7 @@ export default class App extends Component {
 
             <form id="InputContainer" onSubmit={(e) => this.addItem(e)}>
               <input type="text" value={this.state.currentInputValue} onChange={(e) => this.setState({ currentInputValue: e.target.value })} />
-              <button>Add</button>
+              <button type="submit">Add</button>
             </form>
           </div>
         </div>
