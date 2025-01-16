@@ -7,8 +7,8 @@ export default class App extends Component {
     this.state = {
       currentInputValue: "",
       items: [
-        { name: 'Product 1', quantity: 4 },
-        { name: 'Product 2', quantity: 7 }
+        { name: 'Shirt', quantity: 2 },
+        { name: 'Plane', quantity: 1 }
       ],
     }
   }
@@ -19,13 +19,13 @@ export default class App extends Component {
     return !Object.is(state, nextState);
   }
 
-  add(id) {
+  increase(id) {
     let newState = Object.assign({}, this.state)
     newState.items[id].quantity += 1
     this.setState(newState)
   }
 
-  remove(id) {
+  decrease(id) {
     if (this.state.items[id].quantity > 0) {
       let newState = Object.assign({}, this.state)
       newState.items[id].quantity -= 1
@@ -51,29 +51,41 @@ export default class App extends Component {
     this.setState(newState)
   }
 
+  remove(id) {
+    let newState = Object.assign({}, this.state)
+    newState.items = newState.items.filter((_, i) => i !== id)
+    this.setState(newState)
+  }
+
   render() {
     return (
       <div className="App">
         <div id="Container">
           <div id="ContainerList">
-            {
-              this.state.items.map((item, idx) =>
-                <div className="ContainerListItem" key={idx}>
-                  <h4 id="ItemTitle">{item.name}</h4>
-                  <div className="buttons">
-                    <button className="cursor_pointer" onMouseDown={() => this.add(idx)}>+</button>
-                    <span id="quantity" disabled>{item.quantity}</span>
-                    <button className="cursor_pointer" onMouseDown={() => this.remove(idx)} disabled={item.quantity <= 0}>-</button>
+            {this.state.items.length
+              ? (
+                this.state.items.map((item, idx) =>
+                  <div className="ContainerListItem" key={idx}>
+                    <h4 id="ItemTitle">{item.name}</h4>
+                    <div className="buttons">
+                      <button className="cursor_pointer" onMouseDown={() => this.increase(idx)}>+</button>
+                      <span id="quantity" disabled>{item.quantity}</span>
+                      <button className="cursor_pointer" onMouseDown={() => this.decrease(idx)} disabled={item.quantity <= 0}>-</button>
+                      <button style={{ color: "crimson" }} className="cursor_pointer" onMouseDown={() => this.remove(idx)}>𝘅</button>
+                    </div>
                   </div>
-                </div>
+                )
+              )
+              : (
+                <p>Your cart is empty</p>
               )
             }
-
-            <form id="InputContainer" onSubmit={(e) => this.addItem(e)}>
-              <input type="text" value={this.state.currentInputValue} onChange={(e) => this.setState({ currentInputValue: e.target.value })} />
-              <button type="submit">Add</button>
-            </form>
           </div>
+
+          <form id="InputContainer" onSubmit={(e) => this.addItem(e)}>
+            <input type="text" placeholder="type here..." value={this.state.currentInputValue} onChange={(e) => this.setState({ currentInputValue: e.target.value })} />
+            <button type="submit">Add</button>
+          </form>
         </div>
       </div>
     );
