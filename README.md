@@ -4,12 +4,13 @@ This is a shopping cart built with [React](https://reactjs.org/).
 <br>
 
 ## Getting Started
-- Download the repository .
+- Download/Clone the repository.
 - `cd *folder_name*`
-- use `npm start` to start the project
+- Install dependencies `npm install`
+- Run `npm start` to start the project
 
 or
-- you can try a demo via this [link](https://6km.github.io/shopping-cart/)
+- Try a demo via this [link](https://6km.github.io/shopping-cart/)
 
 ## Screenshot
 <img src='screenshot.png'/>
